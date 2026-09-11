@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="hero">
+    <h1>{{ section.title }}</h1>
+    <p class="lede">{{ config.description }}</p>
+    <p class="cta-row">
+        <a class="cta" href="{{ get_url(path='@/features/_index.md') }}">See what it does</a>
+        <a class="cta cta-quiet" href="{{ get_url(path='@/roadmap/_index.md') }}">Roadmap</a>
+    </p>
+</section>
+
+<article class="prose">
+    {{ section.content | safe }}
+</article>
+{% endblock %}

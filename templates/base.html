@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{{ config.title }}{% endblock %}</title>
+    <meta name="description" content="{% block description %}{{ config.description }}{% endblock %}">
+    <link rel="stylesheet" href="{{ get_url(path='style.css') }}">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-header">
+    <div class="container header-inner">
+        <a class="brand" href="{{ config.base_url }}">ThreatLVL</a>
+        <nav aria-label="Main">
+            <ul>
+                <li><a href="{{ get_url(path='@/features/_index.md') }}">Features</a></li>
+                <li><a href="{{ get_url(path='@/roadmap/_index.md') }}">Roadmap</a></li>
+                <li><a href="{{ get_url(path='@/about/_index.md') }}">About</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<main id="main">
+    <div class="container">
+        {% block content %}{% endblock %}
+    </div>
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <p>ThreatLVL is in development and not yet generally available.</p>
+        <p class="muted">&copy; 2026 ThreatLVL</p>
+    </div>
+</footer>
+</body>
+</html>

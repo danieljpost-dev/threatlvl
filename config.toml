@@ -1,0 +1,17 @@
+# ThreatLVL public site -> threatlvl.danieljpost.dev
+base_url = "https://threatlvl.danieljpost.dev"
+title = "ThreatLVL"
+description = "A tabletop RPG platform that runs your game session as live, shared state. The GM is always in the seat."
+
+compile_sass = true
+build_search_index = false
+default_language = "en"
+
+generate_feeds = false
+
+[markdown]
+highlight_code = true
+highlight_theme = "base16-ocean-dark"
+
+[extra]
+tagline = "The GM is always in the seat."

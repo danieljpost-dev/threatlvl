@@ -1,0 +1,247 @@
+// ThreatLVL public site styles.
+// Design tokens come from _variables.scss, vendored from shared-css by
+// Clients/ThreatLVL/bin/features-build. shared-css stays the canonical branding
+// source (Rule #2) - never redefine a token here.
+
+@import "variables";
+
+:root {
+  --bg: var(--background-color);
+  --fg: var(--text-color);
+  --accent: var(--primary-color);
+  --muted-fg: var(--secondary-color);
+  --rule: rgba(108, 117, 125, 0.25);
+  --surface: rgba(108, 117, 125, 0.06);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: var(--dark-background-color);
+    --fg: var(--dark-text-color);
+    --accent: var(--dark-primary-color);
+    --muted-fg: var(--dark-secondary-color);
+    --rule: rgba(176, 183, 189, 0.22);
+    --surface: rgba(176, 183, 189, 0.07);
+  }
+}
+
+* { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-family);
+  font-size: 17px;
+  line-height: 1.65;
+}
+
+.container {
+  width: 100%;
+  max-width: 54rem;
+  margin: 0 auto;
+  padding: 0 calc(var(--spacing-unit) * 3);
+}
+
+.skip {
+  position: absolute;
+  left: -9999px;
+
+  &:focus {
+    left: var(--spacing-unit);
+    top: var(--spacing-unit);
+    z-index: 10;
+    padding: var(--spacing-unit);
+    background: var(--bg);
+    border: 2px solid var(--accent);
+  }
+}
+
+a {
+  color: var(--accent);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+}
+
+// ---------------------------------------------------------------- chrome
+
+.site-header {
+  border-bottom: 1px solid var(--rule);
+  padding: calc(var(--spacing-unit) * 2) 0;
+}
+
+.header-inner {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-unit);
+  align-items: baseline;
+  justify-content: space-between;
+}
+
+.brand {
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: var(--fg);
+  text-decoration: none;
+}
+
+nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: calc(var(--spacing-unit) * 2.5);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+nav a {
+  color: var(--muted-fg);
+  text-decoration: none;
+
+  &:hover { color: var(--accent); }
+}
+
+main { padding: calc(var(--spacing-unit) * 5) 0; }
+
+.site-footer {
+  border-top: 1px solid var(--rule);
+  padding: calc(var(--spacing-unit) * 3) 0;
+  font-size: 0.9rem;
+  color: var(--muted-fg);
+
+  p { margin: 0 0 calc(var(--spacing-unit) * 0.5); }
+}
+
+.muted { color: var(--muted-fg); }
+
+// ------------------------------------------------------------------ hero
+
+.hero {
+  padding-bottom: calc(var(--spacing-unit) * 3);
+  margin-bottom: calc(var(--spacing-unit) * 4);
+  border-bottom: 1px solid var(--rule);
+
+  h1 {
+    font-size: clamp(2rem, 6vw, 3rem);
+    line-height: 1.15;
+    margin: 0 0 var(--spacing-unit);
+  }
+}
+
+.lede {
+  font-size: 1.2rem;
+  color: var(--muted-fg);
+  margin: 0 0 calc(var(--spacing-unit) * 3);
+  max-width: 40rem;
+}
+
+.cta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-unit);
+  margin: 0;
+}
+
+.cta {
+  display: inline-block;
+  padding: var(--spacing-unit) calc(var(--spacing-unit) * 2.5);
+  border: 1px solid var(--accent);
+  border-radius: calc(var(--spacing-unit) * 0.5);
+  background: var(--accent);
+  color: var(--background-color);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.cta-quiet {
+  background: transparent;
+  color: var(--accent);
+}
+
+// ----------------------------------------------------------------- prose
+
+.prose {
+  h2 {
+    margin: calc(var(--spacing-unit) * 5) 0 var(--spacing-unit);
+    padding-bottom: calc(var(--spacing-unit) * 0.5);
+    border-bottom: 1px solid var(--rule);
+    font-size: 1.5rem;
+  }
+
+  h3 { margin: calc(var(--spacing-unit) * 3) 0 var(--spacing-unit); }
+
+  > :first-child { margin-top: 0; }
+
+  blockquote {
+    margin: calc(var(--spacing-unit) * 3) 0;
+    padding: var(--spacing-unit) calc(var(--spacing-unit) * 2);
+    border-left: 3px solid var(--accent);
+    background: var(--surface);
+    color: var(--muted-fg);
+
+    p { margin: calc(var(--spacing-unit) * 0.5) 0; }
+  }
+
+  code {
+    font-size: 0.9em;
+    padding: 0.1em 0.35em;
+    border-radius: 3px;
+    background: var(--surface);
+  }
+
+  pre {
+    padding: calc(var(--spacing-unit) * 2);
+    border-radius: calc(var(--spacing-unit) * 0.5);
+    overflow-x: auto;
+
+    code { background: none; padding: 0; }
+  }
+}
+
+.table-wrap, .prose { overflow-wrap: break-word; }
+
+table {
+  width: 100%;
+  margin: calc(var(--spacing-unit) * 2) 0;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+
+  th, td {
+    padding: var(--spacing-unit) calc(var(--spacing-unit) * 1.5);
+    border-bottom: 1px solid var(--rule);
+    text-align: left;
+    vertical-align: top;
+  }
+
+  th {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--muted-fg);
+  }
+
+  // Status column reads as a short label; keep it from wrapping mid-phrase.
+  td:last-child { white-space: nowrap; }
+
+  br + * { color: var(--muted-fg); }
+}
+
+.page-list {
+  padding-left: calc(var(--spacing-unit) * 2);
+
+  li { margin: calc(var(--spacing-unit) * 0.5) 0; }
+}
+
+@media (max-width: 34rem) {
+  body { font-size: 16px; }
+
+  table {
+    display: block;
+    overflow-x: auto;
+
+    td:last-child { white-space: normal; }
+  }
+}
